@@ -1,6 +1,6 @@
 namespace GameTOP
 {
-    public class Jogador1 
+    public class Jogador1 : iJogador
     {
         // property
         public readonly string _Nome;
@@ -12,17 +12,17 @@ namespace GameTOP
         }
 
         // Chuta
-        public string chuta()
+        public string Chuta()
         {
             return $"{_Nome} está chutando";
         }
         // Corre
-        public string corre()
+        public string Corre()
         {
             return $"{_Nome} está correndo";
         }
         // Passe
-        public string passe()
+        public string Passe()
         {
             return $"{_Nome} está passando";
         }
