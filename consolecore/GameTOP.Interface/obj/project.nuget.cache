@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DIB+FcHac7Nrwhu/IXb1pUIh4rGZrc2IED45kV5MEg0C4Q77l4CqPCEd7HRr9wDDEPS9xCc33BEKNF02NBUpTg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\wylke\\OneDrive\\Documentos\\projects\\Complete course of ASP.Net core\\consolecore\\GameTOP.Interface\\GameTOP.Interface.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wylke\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\wylke\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
