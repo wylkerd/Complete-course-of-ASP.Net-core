@@ -6,7 +6,11 @@ namespace GameTOP
     {
         static void Main(string[] args)
         {
-            var jogo = new JogoMANEIRO(new Jogador1("Ronaldo"));
+            var jogo = new JogoMANEIRO(
+                new Jogador2(),
+                new Jogador1()
+            );
+            
             jogo.IniciarJogo();
         }
     }

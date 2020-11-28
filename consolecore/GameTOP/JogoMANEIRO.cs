@@ -1,20 +1,30 @@
+using System;
+
 namespace GameTOP
 {
     public class JogoMANEIRO
     {
         // property
-        private readonly iJogador _jogador;
+        private readonly iJogador _jogadorA;
+        private readonly iJogador _jogadorB;
 
         // constructor
-        public JogoMANEIRO(iJogador jogador)
+        public JogoMANEIRO(iJogador jogadorA, iJogador jogadorB)
         {
-            _jogador = jogador;
+            _jogadorA = jogadorA;
+            _jogadorB = jogadorB;
         }
         public void IniciarJogo()
         {
-            _jogador.Corre();
-            _jogador.Chuta();
-            _jogador.Passe();
+            Console.WriteLine(_jogadorA.Corre());
+            Console.WriteLine(_jogadorA.Chuta());
+            Console.WriteLine(_jogadorA.Passe());
+            //
+            System.Console.Write("\n  PRÓXIMO JOGADOR \n");
+            //
+            Console.WriteLine(_jogadorB.Corre());
+            Console.WriteLine(_jogadorB.Chuta());
+            Console.WriteLine(_jogadorB.Passe());
         }
 
         

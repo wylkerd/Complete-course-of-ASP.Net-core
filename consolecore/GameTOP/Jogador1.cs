@@ -6,7 +6,7 @@ namespace GameTOP
         public readonly string _Nome;
 
         // constructor
-        public Jogador1(string nome)
+        public Jogador1(string nome = "Neymar")
         {
             _Nome = nome;
         }
