@@ -23,11 +23,11 @@
  ```
  dotnet new console -n folderName
  ```
-  ### Create method 
+  ### Create method (snippet)
  ```
  ctor + enter
  ```
-  ### Create property
+  ### Create property (snippet)
  ```
  prop + enter
  ```
