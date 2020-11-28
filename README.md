@@ -35,6 +35,10 @@
  ```
  ctrl + .
  ```
+   ### Create class
+ ```
+ class + enter
+ ```
    ### Create new external class  
  ```
  rigth button + new C# class
