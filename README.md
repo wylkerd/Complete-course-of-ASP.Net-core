@@ -23,6 +23,14 @@
  ```
  dotnet new console -n folderName
  ```
+  ### Create method 
+ ```
+ ctor + enter
+ ```
+  ### Create property
+ ```
+ prop + enter
+ ```
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
