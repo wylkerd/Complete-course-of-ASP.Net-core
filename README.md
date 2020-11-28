@@ -43,6 +43,11 @@
  ```
  rigth button + new C# class
  ```
+   ### Implement interface  
+ ```
+ ctrl + .
+ ```
+ 
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
