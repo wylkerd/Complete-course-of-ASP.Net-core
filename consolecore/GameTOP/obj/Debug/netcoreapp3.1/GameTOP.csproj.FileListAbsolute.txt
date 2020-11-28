@@ -1,0 +1,26 @@
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.exe
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.deps.json
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.runtimeconfig.json
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.runtimeconfig.dev.json
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.dll
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.pdb
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.csprojAssemblyReference.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.AssemblyInfoInputs.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.AssemblyInfo.cs
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.csproj.CoreCompileInputs.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.dll
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.pdb
+C:\Users\wylke\OneDrive\Documentos\projects\Course ASP.Net_ complete\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.genruntimeconfig.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.exe
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.deps.json
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.runtimeconfig.json
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.runtimeconfig.dev.json
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.dll
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\bin\Debug\netcoreapp3.1\GameTOP.pdb
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.csprojAssemblyReference.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.AssemblyInfoInputs.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.AssemblyInfo.cs
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.csproj.CoreCompileInputs.cache
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.dll
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.pdb
+C:\Users\wylke\OneDrive\Documentos\projects\Complete course of ASP.Net core\consolecore\GameTOP\obj\Debug\netcoreapp3.1\GameTOP.genruntimeconfig.cache

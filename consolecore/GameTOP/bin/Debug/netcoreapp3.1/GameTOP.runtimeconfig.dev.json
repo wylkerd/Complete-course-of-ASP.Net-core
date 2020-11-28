@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\wylke\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\wylke\\.nuget\\packages"
+    ]
+  }
+}
