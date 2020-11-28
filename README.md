@@ -29,7 +29,7 @@
  ```
   ### Create property (snippet)
  ```
- prop + enter
+ prop + TAB
  ```
   ### Create and Initialize field "varname"  
  ```
