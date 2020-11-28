@@ -43,6 +43,10 @@
  ```
  rigth button + new C# class
  ```
+   ### Create new lib of class
+ ```
+ dotnet new classlib -n classname.Lib
+ ```
    ### Implement interface  
  ```
  ctrl + .
