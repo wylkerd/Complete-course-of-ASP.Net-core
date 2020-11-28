@@ -11,7 +11,7 @@
  dotnet -h
  ```
  * command options/templates
- > dotnet [command] -h
+     * dotnet [command] -h
  ```
  dotnet new -h 
  ```
