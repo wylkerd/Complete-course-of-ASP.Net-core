@@ -35,6 +35,10 @@
  ```
  ctrl + .
  ```
+   ### Create new external class  
+ ```
+ rigth button + new C# class
+ ```
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
