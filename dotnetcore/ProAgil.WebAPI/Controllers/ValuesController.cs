@@ -9,13 +9,18 @@ namespace ProAgil.WebAPI.Controllers
 {
     [ApiController]
     [Route("site/[controller]")]
-    public class ValuesController : ControllerBase
+    public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetAction() 
+        public ActionResult<IEnumerable<string>> Get() 
         {
-            return new string[] { "Hello world", "Wylkerd Santos" };
+            return Json(new            
+            {
+                msgm = "Hello world", 
+                nome = "Wylkerd Santos", 
+                idade = "20 anos"
+            });
         }
         [HttpGet("{id}")]
         public ActionResult<string> GetAction(int id)
