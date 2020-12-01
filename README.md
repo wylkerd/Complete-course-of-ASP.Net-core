@@ -58,3 +58,4 @@
  * Bracket Pair Colorizer
  * Material Icon Theme
  * Path Intellisense (helps referencing classes and objects)
+ * Docker
