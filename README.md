@@ -55,12 +55,11 @@
  ```
   dotnet ef migrations add init
  ```
-     * Connection string
-     ```
+  * Connection string
+```
      "ConnectionStrings": {
-    "DefaultConnection": "Data Source=ProAgil.db;Initial Catalog=dbase;Trusted_Connection=True;MultipleActiveResultSets=true"
-  },
-     ```
+    "DefaultConnection": "Data Source=ProAgil.db;Initial Catalog=dbase;Trusted_Connection=True;MultipleActiveResultSets=true"},
+```
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
