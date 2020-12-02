@@ -60,6 +60,10 @@
      "ConnectionStrings": {
     "DefaultConnection": "Data Source=Database.db"},
 ```
+  * Create DataBase and tables
+```
+dotnet ef database update
+```
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
