@@ -58,7 +58,7 @@
   * Connection string
 ```
      "ConnectionStrings": {
-    "DefaultConnection": "Data Source=ProAgil.db;Initial Catalog=dbase;Trusted_Connection=True;MultipleActiveResultSets=true"},
+    "DefaultConnection": "Data Source=Database.db"},
 ```
  ## Main extensions for working with .NET
  * C#
