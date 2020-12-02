@@ -7,6 +7,7 @@ using ProAgil.WebAPI.Models;
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http;
 
 namespace ProAgil.WebAPI.Controllers
 {
@@ -22,9 +23,18 @@ namespace ProAgil.WebAPI.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Evento>> Get()
+        public IActionResult Get()
         {
-            return _context.Eventos.ToList() ;
+            try
+            {
+                var results = _context.Eventos.ToList();
+
+                return Ok(results) ;  
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de Dados falhou");
+            }     
         }
         [HttpGet("{id}")]
         public ActionResult<Evento> Get(int id)
