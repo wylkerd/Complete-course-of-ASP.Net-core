@@ -64,6 +64,10 @@
 ```
 dotnet ef database update
 ```
+   ### Install Bootstrap and Font awesome
+```
+npm i --save botstrap @fortawesome/fontawesome-free
+```
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
