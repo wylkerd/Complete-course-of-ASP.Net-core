@@ -66,7 +66,10 @@ dotnet ef database update
 ```
    ### Install Bootstrap and Font awesome
 ```
-npm i --save bootstrap @fortawesome/fontawesome-free
+npm i --save bootstrap 
+```
+```
+npm i --save @fortawesome/fontawesome-free
 ```
  ## Main extensions for working with .NET
  * C#
