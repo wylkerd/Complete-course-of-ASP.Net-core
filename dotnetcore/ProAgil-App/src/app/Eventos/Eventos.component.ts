@@ -50,7 +50,6 @@ export class EventosComponent implements OnInit {
   ///////////////////////////
 
   eventosFiltrados: any = [];
-   
 
   eventos: any = [];
   imagemLargura = 50;
