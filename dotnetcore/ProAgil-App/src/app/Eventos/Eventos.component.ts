@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventosComponent implements OnInit {
 
-  ////////////// Encapsulmento
+  ////////////// ENCAPSULAMENTO FILTRO TEMA
   _filtroLista!: string;
 
   get filtroLista(): string {
@@ -19,8 +19,39 @@ export class EventosComponent implements OnInit {
     this._filtroLista = value;
     this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos; 
   }
-  /////////////////////////
+  ///////////////////////// ENCAPSULAMENTO FILTRO CIDADE
+
+  _filtroCidade!: string;
+
+  get filtroCidade(): string {
+    return this._filtroCidade;
+  }
+
+  set filtroCidade(value: string) {
+    this._filtroCidade = value;
+    this.eventosFiltrados = 
+      this.filtroCidade ? this.filtrarEventosByCidade(this.filtroCidade) : this.eventos; 
+  }
+
+  ///////////////////////// ENCAPSULAMENTO FILTRO CAPACIDADE
+
+  _filtroCapacidade: string;
+
+  get filtroCapacidade(): string {
+    return this._filtroCapacidade;
+  }
+
+  set filtroCapacidade(value: string) {
+    this._filtroCapacidade = value;
+    this.eventosFiltrados = 
+      this.filtroCapacidade ? this.filtrarEventosByCapacidade(this.filtroCapacidade) : this.eventos; 
+  }
+
+  ///////////////////////////
+
   eventosFiltrados: any = [];
+   
+
   eventos: any = [];
   imagemLargura = 50;
   imagemMargin = 2;
@@ -38,6 +69,20 @@ export class EventosComponent implements OnInit {
     return this.eventos.filter(
       evento => evento.tema.toLocaleLowerCase().indexOf(filtarPor) !== -1
     );
+  }
+
+  filtrarEventosByCidade(filtrarPor: string): any {
+    filtrarPor = filtrarPor.toLocaleLowerCase();
+    return this.eventos.filter(
+      eventoCidade => eventoCidade.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+    )
+  }
+
+  filtrarEventosByCapacidade(filtrarPor: string): any {
+    filtrarPor = filtrarPor.toString();
+    return this.eventos.filter(
+      eventoCapacidade => eventoCapacidade.qtdPessoas.toString().indexOf(filtrarPor) !== -1
+    )
   }
 
   alternarImagem() {
