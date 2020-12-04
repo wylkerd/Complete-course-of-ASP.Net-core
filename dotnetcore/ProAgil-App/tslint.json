@@ -129,6 +129,8 @@
     "no-host-metadata-property": true,
     "no-trailing-whitespace": false,
     "typedef":false,
+    "variable-name":false,
+    "noImplicitAny": false,
     "no-shadowed-variable": false,
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
