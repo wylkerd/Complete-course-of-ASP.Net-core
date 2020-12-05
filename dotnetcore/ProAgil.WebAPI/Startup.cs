@@ -23,6 +23,8 @@ namespace ProAgil.WebAPI
             services.AddDbContext<ProAgilContext>( 
                 x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
+            // toda vez que chamar IProAgilRepository será retornado o repositorio ProAgilRepository
+            services.AddScoped<IProAgilRepository, ProAgilRepository>();
             services.AddControllers();
             services.AddCors();
         }
