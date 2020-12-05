@@ -5,7 +5,7 @@ namespace ProAgil.Repository
 {
     public interface IProAgilRepository
     {
-        // T é um tipo generico
+        // T é um tipo generico. Tneste claso é uma classe
         // GERAL
         void Add<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;
