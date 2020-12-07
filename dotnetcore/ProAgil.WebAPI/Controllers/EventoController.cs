@@ -84,6 +84,7 @@ namespace ProAgil.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Route("{EventoId}")]
         public async Task<IActionResult> Put(int EventoId, Evento model)
         {
             try

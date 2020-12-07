@@ -85,6 +85,7 @@ namespace ProAgil.WebAPI.Controllers
 
 
         [HttpPut]
+        [Route("{PalestranteId}")]
         public async Task<IActionResult> Put(int PalestranteId, Palestrante model)
         {
             try
