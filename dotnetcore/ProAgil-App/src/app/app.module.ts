@@ -10,6 +10,10 @@ import { NavComponent } from './nav/nav.component';
 import { DateTimeFormatPipePipe } from './helps/DateTimeFormatPipe.pipe';
 import { EventoService } from './services/evento.service';
 
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 @NgModule({
   declarations: [		
     AppComponent,
@@ -19,6 +23,9 @@ import { EventoService } from './services/evento.service';
    ],
   imports: [
     BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule
