@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EventoService } from './services/evento.service';
 
@@ -25,7 +26,7 @@ import { DateTimeFormatPipePipe } from './helps/DateTimeFormatPipe.pipe';
    ],
   imports: [
     BrowserModule,
-    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule, BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AppRoutingModule,
