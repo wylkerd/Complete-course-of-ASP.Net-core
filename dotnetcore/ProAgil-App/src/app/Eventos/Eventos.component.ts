@@ -77,9 +77,9 @@ export class EventosComponent implements OnInit {
     filtroLocal.toLocaleLowerCase();
     filtroCapacidade.toString();
     return this.eventosFiltrados = this.eventos.filter(evento => 
-         evento.tema.toLocaleLowerCase().indexOf(filtroTema) !== -1).filter( 
-         evento => evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1).filter(
-         evento => evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
+         evento.tema.toLocaleLowerCase().indexOf(filtroTema) !== -1
+         && evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1
+         && evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
   }
     
   alternarImagem() {
