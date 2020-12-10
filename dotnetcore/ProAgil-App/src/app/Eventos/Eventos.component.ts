@@ -26,7 +26,7 @@ export class EventosComponent implements OnInit {
 
   ////////////// ENCAPSULAMENTO FILTRO TEMA
   
-  _filtroTema!: string;
+  _filtroTema = "";
 
   get filtroByTema(): string {
     return this._filtroTema;
@@ -38,7 +38,7 @@ export class EventosComponent implements OnInit {
   }
   ///////////////////////// ENCAPSULAMENTO FILTRO CIDADE
 
-  _filtroLocal!: string;
+  _filtroLocal = "";
 
   get filtroByLocal(): string {
     return this._filtroLocal;
@@ -51,7 +51,7 @@ export class EventosComponent implements OnInit {
 
   ///////////////////////// ENCAPSULAMENTO FILTRO CAPACIDADE
 
-  _filtroCapacidade!: string;
+  _filtroCapacidade = "";
 
   get filtroByCapacidade(): string {
     return this._filtroCapacidade;
