@@ -5,7 +5,7 @@
         <input type="text" 
           class="form-control mr-2" 
           placeholder="Buscar por tema"
-          [(ngModel)] = "filtroLista"
+          [(ngModel)] = "filtroByTema"
         >
     </div>
   </div>
@@ -16,7 +16,7 @@
         <input type="text" 
           class="form-control mr-2" 
           placeholder="Buscar por cidade"
-          [(ngModel)] = "filtroCidade"
+          [(ngModel)] = "filtroByLocal"
         >
     </div>
   </div>
@@ -28,14 +28,14 @@
       <input type="text" 
         class="form-control mr-2"
         placeholder="Buscar por capacidade"
-        [(ngModel)] = "filtroCapacidade"
+        [(ngModel)] = "filtroByCapacidade"
       >
   </div>
 </div>
 
-<h3>Tema: {{filtroLista}}</h3>
-<h3>Cidade: {{filtroCidade}}</h3>
-<h3>Capacidade: {{filtroCapacidade}}</h3>
+<h3>Tema: {{filtroByTema}}</h3>
+<h3>Cidade: {{filtroByLocal}}</h3>
+<h3>Capacidade: {{filtroByCapacidade}}</h3>
 
 <table class="table table-striped">
   <thead class="thead-light">

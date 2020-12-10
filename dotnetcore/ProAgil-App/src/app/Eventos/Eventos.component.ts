@@ -19,49 +19,47 @@ export class EventosComponent implements OnInit {
   mostrarImagem = false;
   modalRef: BsModalRef; 
 
+  constructor(
+    private eventoService: EventoService
+  , private modalService: BsModalService
+  ) { }
+
   ////////////// ENCAPSULAMENTO FILTRO TEMA
   
-  _filtroLista!: string;
+  _filtroTema!: string;
 
-  constructor(
-      private eventoService: EventoService
-    , private modalService: BsModalService
-    ) { }
-
-  get filtroLista(): string {
-    return this._filtroLista;
+  get filtroByTema(): string {
+    return this._filtroTema;
   }
 
-  set filtroLista(value: string) {
-    this._filtroLista = value;
-    this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos; 
+  set filtroByTema(value: string) {
+    this._filtroTema = value;
+    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade); 
   }
   ///////////////////////// ENCAPSULAMENTO FILTRO CIDADE
 
-  _filtroCidade!: string;
+  _filtroLocal!: string;
 
-  get filtroCidade(): string {
-    return this._filtroCidade;
+  get filtroByLocal(): string {
+    return this._filtroLocal;
   }
 
-  set filtroCidade(value: string) {
-    this._filtroCidade = value;
-    this.eventosFiltrados = 
-      this.filtroCidade ? this.filtrarEventosByCidade(this.filtroCidade) : this.eventos; 
+  set filtroByLocal(value: string) {
+    this._filtroLocal = value;
+    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade); 
   }
 
   ///////////////////////// ENCAPSULAMENTO FILTRO CAPACIDADE
 
-  _filtroCapacidade: string;
+  _filtroCapacidade!: string;
 
-  get filtroCapacidade(): string {
+  get filtroByCapacidade(): string {
     return this._filtroCapacidade;
   }
 
-  set filtroCapacidade(value: string) {
+  set filtroByCapacidade(value: string) {
     this._filtroCapacidade = value;
-    this.eventosFiltrados = 
-      this.filtroCapacidade ? this.filtrarEventosByCapacidade(this.filtroCapacidade) : this.eventos; 
+    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade); 
   }
 
   ///////////////////////////  
@@ -74,27 +72,16 @@ export class EventosComponent implements OnInit {
     this.getEventos();
   }
 
-  filtrarEventos(filtarPor: string): Evento[] {
-    filtarPor = filtarPor.toLocaleLowerCase();
-    return this.eventos.filter(
-      evento => evento.tema.toLocaleLowerCase().indexOf(filtarPor) !== -1
-    );
+  filtrarEventos(filtroTema: string, filtroLocal: string, filtroCapacidade: string): Evento[]{
+    filtroTema.toLocaleLowerCase();
+    filtroLocal.toLocaleLowerCase();
+    filtroCapacidade.toString();
+    return this.eventosFiltrados = this.eventos.filter(evento => 
+         evento.tema.toLocaleLowerCase().indexOf(filtroTema) !== -1).filter( 
+         evento => evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1).filter(
+         evento => evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
   }
-
-  filtrarEventosByCidade(filtrarPor: string): Evento[] {
-    filtrarPor = filtrarPor.toLocaleLowerCase();
-    return this.eventos.filter(
-      eventoCidade => eventoCidade.local.toLocaleLowerCase().indexOf(filtrarPor) !== -1
-    )
-  }
-
-  filtrarEventosByCapacidade(filtrarPor: string): Evento[] {
-    filtrarPor = filtrarPor.toString();
-    return this.eventos.filter(
-      eventoCapacidade => eventoCapacidade.qtdPessoas.toString().indexOf(filtrarPor) !== -1
-    )
-  }
-
+    
   alternarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
   }
