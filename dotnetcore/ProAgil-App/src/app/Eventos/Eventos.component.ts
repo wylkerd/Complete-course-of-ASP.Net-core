@@ -81,6 +81,10 @@ export class EventosComponent implements OnInit {
          && evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1
          && evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
   }
+
+  sortBy(prop: string) {
+    return this.eventosFiltrados.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+  }
     
   alternarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
