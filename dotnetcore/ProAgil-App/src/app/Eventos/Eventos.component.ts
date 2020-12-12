@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
@@ -18,6 +19,7 @@ export class EventosComponent implements OnInit {
   imagemMargin = 2;
   mostrarImagem = false;
   modalRef: BsModalRef; 
+  registerForm: FormGroup;
 
   constructor(
     private eventoService: EventoService
@@ -84,6 +86,21 @@ export class EventosComponent implements OnInit {
 
   sortBy(prop: string) {
     return this.eventosFiltrados.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
+  }
+
+  validation(){
+    this.registerForm = new FormGroup({
+      tema: new FormControl,
+      local: new FormControl,
+      dataEvento: new FormControl,
+      qtdPessoas: new FormControl,
+      telefone: new FormControl,
+      email: new FormControl
+    });
+  }
+
+  salvarAlteracao(){
+
   }
     
   alternarImagem() {
