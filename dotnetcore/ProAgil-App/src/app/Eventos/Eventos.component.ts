@@ -21,16 +21,8 @@ export class EventosComponent implements OnInit {
   imagemMargin = 2;
   mostrarImagem = false;
   modalRef: BsModalRef;
-  registerForm = this.fb.group({
-    tema:['', Validators.required, Validators.minLength(4), Validators.maxLength(50)],
-    local:['',Validators.required],
-    dataEvento:['',Validators.required],
-    qtdPessoas:['',Validators.required, Validators.max(500)],
-    imagemURL:['',Validators.required],
-    telefone:['',Validators.required],
-    email:['',Validators.required, Validators.email]
-  });
-
+  registerForm: FormGroup;
+  
   constructor(
     private eventoService: EventoService
   , private modalService: BsModalService
@@ -105,15 +97,15 @@ export class EventosComponent implements OnInit {
   }
 
   validation() {
-    this.registerForm = new FormGroup({
-      tema: new FormControl(''),
-      local: new FormControl(''),
-      dataEvento: new FormControl(''),
-      qtdPessoas: new FormControl(''),
-      imagemURL: new FormControl(''),
-      telefone: new FormControl(''),
-      email: new FormControl('')
-    })
+    this.registerForm = this.fb.group({
+      tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+      local: ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      imagemURL: ['', Validators.required],
+      qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
+      telefone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
   salvarAlteracao() {

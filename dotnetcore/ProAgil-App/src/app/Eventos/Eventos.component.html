@@ -116,8 +116,10 @@
 <form [formGroup]="registerForm" >
   <div class="form-row">
     <div class="form-group col-md-12">
-      <label>Tema</label>
-      <input  type="text" class="form-control is-invalid" formControlName="tema" placeholder="" >
+      <label for="tema">Tema</label>
+      <input  type="text" class="form-control" 
+      [ngClass]="{'is-invalid': registerForm.get('tema').errors && registerForm.get('tema').touched}"
+      id="tema" formControlName="tema" placeholder="">
       <div class="invalid-feedback">
         Tema é obrigatório
       </div>
@@ -126,14 +128,14 @@
   <div class="form-row">
     <div class="form-group col-md-8">
       <label>Local</label>
-      <input  type="text" class="form-control is-invalid" formControlName="local" placeholder="" >
+      <input  type="text" class="form-control" formControlName="local" placeholder="" >
       <div class="invalid-feedback">
         Tema é obrigatório
       </div>
     </div>
     <div class="form-group col-md-4">
       <label>Data e Hora</label>
-      <input  type="text" class="form-control is-invalid" formControlName="dataEvento" placeholder="" >
+      <input  type="text" class="form-control" formControlName="dataEvento" placeholder="" >
       <div class="invalid-feedback">
         Data e hora é obrigatório
       </div>
@@ -142,14 +144,14 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label>Qtd Pessoas</label>
-      <input  type="text" class="form-control is-invalid" formControlName="qtdPessoas" placeholder="" >
+      <input  type="text" class="form-control" formControlName="qtdPessoas" placeholder="" >
       <div class="invalid-feedback">
         Capacidade é obrigatório
       </div>
     </div>
     <div class="form-group col-md-9">
       <label>Imagem</label>
-      <input  type="text" class="form-control is-invalid" formControlName="imagemURL" placeholder="" >
+      <input  type="text" class="form-control" formControlName="imagemURL" placeholder="" >
       <div class="invalid-feedback">
         Imagem é obrigatório
       </div>
@@ -158,14 +160,14 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Telefone</label>
-      <input  type="text" class="form-control is-invalid" formControlName="telefone" placeholder="" >
+      <input  type="text" class="form-control" formControlName="telefone" placeholder="" >
       <div class="invalid-feedback">
         Telefone é obrigatório
       </div>
     </div>
     <div class="form-group col-md-8">
       <label>Email</label>
-      <input  type="text" class="form-control is-invalid" formControlName="email" placeholder="" >
+      <input  type="text" class="form-control" formControlName="email" placeholder="" >
       <div class="invalid-feedback">
         Email é obrigatório
       </div>
