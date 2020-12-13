@@ -1,8 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
+
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-Eventos',
@@ -19,11 +21,20 @@ export class EventosComponent implements OnInit {
   imagemMargin = 2;
   mostrarImagem = false;
   modalRef: BsModalRef;
-  registerForm: FormGroup; 
+  registerForm = this.fb.group({
+    tema:['', Validators.required, Validators.minLength(4), Validators.maxLength(50)],
+    local:['',Validators.required],
+    dataEvento:['',Validators.required],
+    qtdPessoas:['',Validators.required, Validators.max(500)],
+    imagemURL:['',Validators.required],
+    telefone:['',Validators.required],
+    email:['',Validators.required, Validators.email]
+  });
 
   constructor(
     private eventoService: EventoService
   , private modalService: BsModalService
+  , private fb: FormBuilder
   ) { }
 
   ////////////// ENCAPSULAMENTO FILTRO TEMA
@@ -95,13 +106,13 @@ export class EventosComponent implements OnInit {
 
   validation() {
     this.registerForm = new FormGroup({
-      tema: new FormControl,
-      local: new FormControl,
-      dataEvento: new FormControl,
-      qtdPessoas: new FormControl,
-      imagemURL: new FormControl,
-      telefone: new FormControl,
-      email: new FormControl
+      tema: new FormControl(''),
+      local: new FormControl(''),
+      dataEvento: new FormControl(''),
+      qtdPessoas: new FormControl(''),
+      imagemURL: new FormControl(''),
+      telefone: new FormControl(''),
+      email: new FormControl('')
     })
   }
 
