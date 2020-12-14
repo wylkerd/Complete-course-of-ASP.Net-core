@@ -1,10 +1,14 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
 
-import { FormBuilder } from '@angular/forms';
+import { defineLocale, ptBrLocale } from 'ngx-bootstrap/chronos';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+
+
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
   selector: 'app-Eventos',
@@ -27,7 +31,10 @@ export class EventosComponent implements OnInit {
     private eventoService: EventoService
   , private modalService: BsModalService
   , private fb: FormBuilder
-  ) { }
+  , private localeService: BsLocaleService
+  ) { 
+    this.localeService.use('pt-br');
+  }
 
   ////////////// ENCAPSULAMENTO FILTRO TEMA
   
