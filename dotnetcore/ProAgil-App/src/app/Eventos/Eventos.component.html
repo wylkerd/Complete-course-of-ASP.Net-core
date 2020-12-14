@@ -122,15 +122,15 @@
       id="tema" formControlName="tema" placeholder="">
       <div *ngIf="registerForm.get('tema').hasError('required')
       && registerForm.get('tema').touched" class="invalid-feedback">
-        Tema é obrigatório
+        Tema é obrigatório.
       </div>
       <div *ngIf="registerForm.get('tema').hasError('minlength')
       && registerForm.get('tema').touched" class="invalid-feedback">
-        Tema deve ter no minimo 4 caracteres
+        Tema deve ter no minimo 4 caracteres.
       </div>
       <div *ngIf="registerForm.get('tema').hasError('maxlength')
       && registerForm.get('tema').touched" class="invalid-feedback">
-        Tema deve ter no maximo 50 caracteres
+        Tema deve ter no maximo 50 caracteres.
       </div>
     </div>
   </div>  
@@ -140,8 +140,9 @@
       <input  type="text" class="form-control"
       [ngClass]="{'is-invalid': registerForm.get('local').errors && registerForm.get('local').touched}"
       formControlName="local" placeholder="" >
-      <div class="invalid-feedback">
-        Local é obrigatório
+      <div *ngIf="registerForm.get('local').hasError('required')
+      && registerForm.get('local').touched" class="invalid-feedback">
+        Local é obrigatório.
       </div>
     </div>
     <div class="form-group col-md-4">
@@ -149,8 +150,9 @@
       <input  type="text" class="form-control"
       [ngClass]="{'is-invalid': registerForm.get('dataEvento').errors && registerForm.get('dataEvento').touched}" 
       formControlName="dataEvento" placeholder="" >
-      <div class="invalid-feedback">
-        Data e hora é obrigatório
+      <div *ngIf="registerForm.get('dataEvento').hasError('required')
+      && registerForm.get('dataEvento').touched" class="invalid-feedback">
+        Data e hora é obrigatório.
       </div>
     </div>
   </div>  
@@ -160,8 +162,13 @@
       <input  type="text" class="form-control" 
       [ngClass]="{'is-invalid': registerForm.get('qtdPessoas').errors && registerForm.get('qtdPessoas').touched}"
       formControlName="qtdPessoas" placeholder="" >
-      <div class="invalid-feedback">
-        Capacidade é obrigatório
+      <div *ngIf="registerForm.get('qtdPessoas').hasError('required')
+      && registerForm.get('qtdPessoas').touched" class="invalid-feedback">
+        Capacidade é obrigatório.
+      </div>
+      <div *ngIf="registerForm.get('qtdPessoas').hasError('max')
+      && registerForm.get('qtdPessoas').touched" class="invalid-feedback">
+        Capacidade deve ser menor que 500.
       </div>
     </div>
     <div class="form-group col-md-9">
@@ -169,8 +176,9 @@
       <input  type="text" class="form-control" 
       [ngClass]="{'is-invalid': registerForm.get('imagemURL').errors && registerForm.get('imagemURL').touched}"
       formControlName="imagemURL" placeholder="" >
-      <div class="invalid-feedback">
-        Imagem é obrigatório
+      <div *ngIf="registerForm.get('imagemURL').hasError('required')
+      && registerForm.get('imagemURL').touched" class="invalid-feedback">
+        Imagem é obrigatório.
       </div>
     </div>
   </div>  
@@ -180,8 +188,9 @@
       <input  type="text" class="form-control" 
       [ngClass]="{'is-invalid': registerForm.get('telefone').errors && registerForm.get('telefone').touched}"
       formControlName="telefone" placeholder="" >
-      <div class="invalid-feedback">
-        Telefone é obrigatório
+      <div *ngIf="registerForm.get('telefone').hasError('required')
+      && registerForm.get('telefone').touched" class="invalid-feedback">
+        Telefone é obrigatório.
       </div>
     </div>
     <div class="form-group col-md-8">
@@ -189,8 +198,13 @@
       <input  type="text" class="form-control" 
       [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
       formControlName="email" placeholder="" >
-      <div class="invalid-feedback">
-        Email é obrigatório
+      <div *ngIf="registerForm.get('email').hasError('required')
+      && registerForm.get('email').touched" class="invalid-feedback">
+        Email é obrigatório.
+      </div>
+      <div *ngIf="registerForm.get('email').hasError('email')
+      && registerForm.get('email').touched" class="invalid-feedback">
+        Deve ser um e-mail válido.
       </div>
     </div>
   </div> 
