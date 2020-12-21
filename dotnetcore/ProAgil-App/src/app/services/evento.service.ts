@@ -26,7 +26,7 @@ export class EventoService {
   }
 
   postEvento(evento: Evento) {
-    return this.http.put(this.baseURL, evento);
+    return this.http.post(this.baseURL, evento);
   }
 }
                  
