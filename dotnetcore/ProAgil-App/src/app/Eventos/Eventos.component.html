@@ -174,7 +174,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
   <div *ngIf="registerForm.get('qtdPessoas').hasError('max')
   && registerForm.get('qtdPessoas').touched" class="invalid-feedback">
   Capacidade deve ser menor que 500.
-</div>
+  </div>
 </div>
 <div class="form-group col-md-9">
   <label>Imagem</label>
@@ -198,31 +198,31 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
     Telefone é obrigatório.
   </div>
 </div>
-<div class="form-group col-md-8">
-  <label>Email</label>
-  <input  type="text" class="form-control" 
-  [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
-  formControlName="email" placeholder="" >
-  <div *ngIf="registerForm.get('email').hasError('required')
-  && registerForm.get('email').touched" class="invalid-feedback">
-  Email é obrigatório.
-</div>
-<div *ngIf="registerForm.get('email').hasError('email')
-&& registerForm.get('email').touched" class="invalid-feedback">
-Deve ser um e-mail válido.
-</div>
-</div>
+  <div class="form-group col-md-8">
+    <label>Email</label>
+    <input  type="text" class="form-control" 
+    [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
+    formControlName="email" placeholder="" >
+    <div *ngIf="registerForm.get('email').hasError('required')
+    && registerForm.get('email').touched" class="invalid-feedback">
+    Email é obrigatório.
+    </div>
+    <div *ngIf="registerForm.get('email').hasError('email')
+    && registerForm.get('email').touched" class="invalid-feedback">
+    Deve ser um e-mail válido.
+    </div>
+  </div>
 </div> 
 </form>
 </div>
-<div class="modal-footer d-flex">
-  <button class="btn btn-secondary" (click)="template.hide()">
-    Fechar
-  </button>
-  <button class="btn btn-primary ml-auto" [disabled]="!registerForm.valid"(click)="salvarAlteracao()">
-    Salvar Alterações
-  </button>
-</div>
+  <div class="modal-footer d-flex">
+    <button class="btn btn-secondary" (click)="template.hide()">
+      Fechar
+    </button>
+    <button class="btn btn-primary ml-auto" [disabled]="!registerForm.valid" (click)="salvarAlteracao(template)">
+      Salvar Alterações
+    </button>
+  </div>
 </div>
 </div>
 </div>

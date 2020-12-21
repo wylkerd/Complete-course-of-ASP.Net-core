@@ -6,6 +6,7 @@ import { EventoService } from '../services/evento.service';
 
 import { defineLocale, ptBrLocale } from 'ngx-bootstrap/chronos';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { templateJitUrl } from '@angular/compiler';
 
 
 defineLocale('pt-br', ptBrLocale);
@@ -21,6 +22,8 @@ export class EventosComponent implements OnInit {
   eventosFiltrados: Evento [];
 
   eventos: Evento [];
+
+  evento: Evento;
   imagemLargura = 50;
   imagemMargin = 2;
   mostrarImagem = false;
@@ -76,6 +79,7 @@ export class EventosComponent implements OnInit {
   ///////////////////////////  
 
   openModal(template:any) {
+    this.registerForm.reset();
     template.show();
   }
 
@@ -114,8 +118,19 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  salvarAlteracao() {
-
+  salvarAlteracao(template: any) {
+    if(this.registerForm.valid) {
+      this.evento = Object.assign({}, this.registerForm.value);
+      this.eventoService.postEvento(this.evento).subscribe(
+        (novoEvento: Evento) => {
+          console.log(novoEvento);
+          template.hide();
+          this.getEventos();
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   getEventos() {
