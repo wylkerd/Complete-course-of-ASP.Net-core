@@ -29,6 +29,7 @@ export class EventosComponent implements OnInit {
   imagemMargin = 2;
   mostrarImagem = false;
   registerForm: FormGroup;
+  bodyDeletarEvento = '';
   
   constructor(
     private eventoService: EventoService
@@ -131,6 +132,17 @@ export class EventosComponent implements OnInit {
     });
   }
 
+  getEventos() {
+    this.eventoService.getAllEventos().subscribe(
+      (_eventos: Evento[]) => { 
+      this.eventos = _eventos;
+      this.eventosFiltrados = this.eventos; 
+      console.log(_eventos);
+    }, error => {
+      console.log(error);
+    });
+  }
+
   salvarAlteracao(template: any) {
     if(this.registerForm.valid) {
       if (this.modoSalvar === 'post') {
@@ -158,15 +170,21 @@ export class EventosComponent implements OnInit {
     }
   }
 
-  getEventos() {
-    this.eventoService.getAllEventos().subscribe(
-      (_eventos: Evento[]) => { 
-      this.eventos = _eventos;
-      this.eventosFiltrados = this.eventos; 
-      console.log(_eventos);
-    }, error => {
-      console.log(error);
-    });
+  excluirEvento(evento: Evento, template: any) {
+    this.openModal(template);
+    this.evento = evento;
+    this.bodyDeletarEvento = `Tem certeza que deseja excluir o Evento: ${evento.tema}, Código: ${evento.id}`;
+  }
+
+  confirmeDelete(template: any) {
+    this.eventoService.deleteEvento(this.evento.id).subscribe(
+      () => {
+          template.hide();
+          this.getEventos();
+        }, error => {
+          console.log(error);
+        }
+    );
   }
 
 }
