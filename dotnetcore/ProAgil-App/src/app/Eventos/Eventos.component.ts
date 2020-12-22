@@ -20,10 +20,11 @@ defineLocale('pt-br', ptBrLocale);
 export class EventosComponent implements OnInit {
 
   eventosFiltrados: Evento [];
-
   eventos: Evento [];
 
   evento: Evento;
+  modoSalvar = 'post';
+
   imagemLargura = 50;
   imagemMargin = 2;
   mostrarImagem = false;
@@ -78,6 +79,18 @@ export class EventosComponent implements OnInit {
 
   ///////////////////////////  
 
+  editarEvento(evento: Evento, template: any) {
+    this.modoSalvar = 'put';
+    this.openModal(template);
+    this.evento = evento;
+    this.registerForm.patchValue(evento);
+  }
+
+  novoEvento(template: any) {
+    this.modoSalvar = 'post';
+    this.openModal(template);
+  }
+
   openModal(template:any) {
     this.registerForm.reset();
     template.show();
@@ -120,16 +133,28 @@ export class EventosComponent implements OnInit {
 
   salvarAlteracao(template: any) {
     if(this.registerForm.valid) {
-      this.evento = Object.assign({}, this.registerForm.value);
-      this.eventoService.postEvento(this.evento).subscribe(
-        (novoEvento: Evento) => {
-          console.log(novoEvento);
-          template.hide();
-          this.getEventos();
-        }, error => {
-          console.log(error);
-        }
-      );
+      if (this.modoSalvar === 'post') {
+        this.evento = Object.assign({}, this.registerForm.value);
+        this.eventoService.postEvento(this.evento).subscribe(
+          (novoEvento: Evento) => {
+            console.log(novoEvento);
+            template.hide();
+            this.getEventos();
+          }, error => {
+            console.log(error);
+          }
+        );
+      } else {
+        this.evento = Object.assign({ id: this.evento.id }, this.registerForm.value);
+        this.eventoService.putEvento(this.evento).subscribe(
+          () => {
+            template.hide();
+            this.getEventos();
+          }, error => {
+            console.log(error);
+          }
+        );
+      }
     }
   }
 
