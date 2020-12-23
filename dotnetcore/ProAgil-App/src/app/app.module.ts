@@ -7,25 +7,28 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule } from 'ngx-toastr';
+import { DateTimeFormatPipePipe } from './helps/DateTimeFormatPipe.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EventoService } from './services/evento.service';
 
 import { AppComponent } from './app.component';
 import { EventosComponent } from './Eventos/Eventos.component';
 import { NavComponent } from './nav/nav.component';
-
-import { DateTimeFormatPipePipe } from './helps/DateTimeFormatPipe.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { PalestrantesComponent } from './Palestrantes/Palestrantes.component';
+import { DashboardComponent } from './Dashboard/Dashboard.component';
+import { ContatosComponent } from './Contatos/Contatos.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
-      EventosComponent,
-      NavComponent,
-      DateTimeFormatPipePipe
+    NavComponent,
+    EventosComponent,
+    PalestrantesComponent,
+    DashboardComponent,
+    ContatosComponent,
+    DateTimeFormatPipePipe
    ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule
   ],
   providers: [
     EventoService
