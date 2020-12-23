@@ -6,8 +6,7 @@ import { EventoService } from '../services/evento.service';
 
 import { defineLocale, ptBrLocale } from 'ngx-bootstrap/chronos';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { templateJitUrl } from '@angular/compiler';
-
+import { ToastrService } from 'ngx-toastr';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -36,6 +35,7 @@ export class EventosComponent implements OnInit {
   , private modalService: BsModalService
   , private fb: FormBuilder
   , private localeService: BsLocaleService
+  , private toastr: ToastrService
   ) { 
     this.localeService.use('pt-br');
   }
@@ -152,8 +152,9 @@ export class EventosComponent implements OnInit {
             console.log(novoEvento);
             template.hide();
             this.getEventos();
+            this.toastr.success('Inserido com sucesso!');
           }, error => {
-            console.log(error);
+            this.toastr.error(`Erro ao inserir: ${error}`);
           }
         );
       } else {
@@ -162,8 +163,9 @@ export class EventosComponent implements OnInit {
           () => {
             template.hide();
             this.getEventos();
+            this.toastr.success('Editado com sucesso!');
           }, error => {
-            console.log(error);
+            this.toastr.error(`Erro ao editar: ${error}`);
           }
         );
       }
@@ -181,7 +183,9 @@ export class EventosComponent implements OnInit {
       () => {
           template.hide();
           this.getEventos();
+          this.toastr.success('Deletado com sucesso!');
         }, error => {
+          this.toastr.error('Erro ao tentar deletar!');
           console.log(error);
         }
     );
