@@ -27,7 +27,7 @@ namespace ProAgil.WebAPI
             // toda vez que chamar IProAgilRepository será retornado o repositorio ProAgilRepository
             services.AddScoped<IProAgilRepository, ProAgilRepository>();
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
             services.AddCors();
