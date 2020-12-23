@@ -19,6 +19,7 @@ import { NavComponent } from './nav/nav.component';
 import { PalestrantesComponent } from './Palestrantes/Palestrantes.component';
 import { DashboardComponent } from './Dashboard/Dashboard.component';
 import { ContatosComponent } from './Contatos/Contatos.component';
+import { TituloComponent } from './shared/Titulo/Titulo.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ContatosComponent } from './Contatos/Contatos.component';
     PalestrantesComponent,
     DashboardComponent,
     ContatosComponent,
+    TituloComponent,
     DateTimeFormatPipePipe
    ],
   imports: [

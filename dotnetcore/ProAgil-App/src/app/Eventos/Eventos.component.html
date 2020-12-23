@@ -1,9 +1,9 @@
-
+<app-Titulo></app-Titulo>
 <div class="form-inline">
   <div class="form-group mb-2">
-    <label class="mr-2">Filtro Tema: </label> 
-    <input type="text" 
-    class="form-control mr-2" 
+    <label class="mr-2">Filtro Tema: </label>
+    <input type="text"
+    class="form-control mr-2"
     placeholder="Buscar por tema"
     [(ngModel)] = "filtroByTema"
     >
@@ -12,9 +12,9 @@
 
 <div class="form-inline">
   <div class="form-group mb-2">
-    <label class="mr-2">Filtro Cidade: </label> 
-    <input type="text" 
-    class="form-control mr-2" 
+    <label class="mr-2">Filtro Cidade: </label>
+    <input type="text"
+    class="form-control mr-2"
     placeholder="Buscar por cidade"
     [(ngModel)] = "filtroByLocal"
     >
@@ -24,8 +24,8 @@
 <div class="d-flex">
   <div class="form-inline mr-auto">
     <div class="form-group mb-2">
-      <label class="mr-2">Filtro Capaciadade: </label> 
-      <input type="text" 
+      <label class="mr-2">Filtro Capaciadade: </label>
+      <input type="text"
       class="form-control mr-2"
       placeholder="Buscar por capacidade"
       [(ngModel)] = "filtroByCapacidade"
@@ -85,11 +85,11 @@
     </td>
     <td>
     <div class="btn-group">
-      <button class="btn btn-sm btn-primary" 
+      <button class="btn btn-sm btn-primary"
         tooltip="Editar" (click)="editarEvento(evento, template)">
         <i class="fa fa-edit"></i>
       </button>
-      <button class="btn btn-sm btn-danger" 
+      <button class="btn btn-sm btn-danger"
         tooltip="Excluir" (click)="excluirEvento(evento, confirm)">
         <i class="fa fa-eraser"></i>
       </button>
@@ -121,7 +121,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="tema">Tema</label>
-            <input  type="text" class="form-control" 
+            <input  type="text" class="form-control"
             [ngClass]="{'is-invalid': registerForm.get('tema').errors && registerForm.get('tema').touched}"
             id="tema" formControlName="tema" placeholder="">
             <div *ngIf="registerForm.get('tema').hasError('required')
@@ -137,7 +137,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
         Tema deve ter no maximo 50 caracteres.
       </div>
     </div>
-  </div>  
+  </div>
   <div class="form-row">
     <div class="form-group col-md-8">
       <label>Local</label>
@@ -154,14 +154,14 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
     <input  type="text" class="form-control"
     bsDatepicker
     [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY, hh:mm a' }"
-    [ngClass]="{'is-invalid': registerForm.get('dataEvento').errors && registerForm.get('dataEvento').touched}" 
+    [ngClass]="{'is-invalid': registerForm.get('dataEvento').errors && registerForm.get('dataEvento').touched}"
     formControlName="dataEvento" placeholder="" >
     <div *ngIf="registerForm.get('dataEvento').hasError('required')
     && registerForm.get('dataEvento').touched" class="invalid-feedback">
     Data e hora é obrigatório.
   </div>
 </div>
-</div>  
+</div>
 <div class="form-row">
   <div class="form-group col-md-3">
     <label>Qtd Pessoas</label>
@@ -179,7 +179,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
 </div>
 <div class="form-group col-md-9">
   <label>Imagem</label>
-  <input  type="text" class="form-control" 
+  <input  type="text" class="form-control"
   [ngClass]="{'is-invalid': registerForm.get('imagemURL').errors && registerForm.get('imagemURL').touched}"
   formControlName="imagemURL" placeholder="" >
   <div *ngIf="registerForm.get('imagemURL').hasError('required')
@@ -187,11 +187,11 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
   Imagem é obrigatório.
 </div>
 </div>
-</div>  
+</div>
 <div class="form-row">
   <div class="form-group col-md-4">
     <label>Telefone</label>
-    <input  type="text" class="form-control" 
+    <input  type="text" class="form-control"
     [ngClass]="{'is-invalid': registerForm.get('telefone').errors && registerForm.get('telefone').touched}"
     formControlName="telefone" placeholder="" >
     <div *ngIf="registerForm.get('telefone').hasError('required')
@@ -201,7 +201,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
 </div>
   <div class="form-group col-md-8">
     <label>Email</label>
-    <input  type="text" class="form-control" 
+    <input  type="text" class="form-control"
     [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
     formControlName="email" placeholder="" >
     <div *ngIf="registerForm.get('email').hasError('required')
@@ -213,7 +213,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
     Deve ser um e-mail válido.
     </div>
   </div>
-</div> 
+</div>
 </form>
 </div>
   <div class="modal-footer d-flex">
@@ -241,8 +241,8 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
     		</div>
     		<div class="modal-body">
       			<p>{{bodyDeletarEvento}}</p>
-    		</div>    
-    		<div class="modal-footer btn-group d-flex">      
+    		</div>
+    		<div class="modal-footer btn-group d-flex">
       			<button type="button" class="btn btn-outline-primary" (click)="confirm.hide()">
         			CENCELAR
       			</button>
