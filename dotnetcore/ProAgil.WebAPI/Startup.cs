@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,9 @@ namespace ProAgil.WebAPI
             );
             // toda vez que chamar IProAgilRepository será retornado o repositorio ProAgilRepository
             services.AddScoped<IProAgilRepository, ProAgilRepository>();
+
+            services.AddAutoMapper();
+
             services.AddControllers();
             services.AddCors();
         }
