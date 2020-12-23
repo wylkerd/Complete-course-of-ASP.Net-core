@@ -86,7 +86,7 @@ namespace ProAgil.WebAPI.Controllers
 
                 if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/evento/{model.Id}", model);
+                    return Created($"/api/evento/{model.Id}",  _mapper.Map<EventoDto>(evento));
                 }
             }
             catch (System.Exception ex)
@@ -99,7 +99,7 @@ namespace ProAgil.WebAPI.Controllers
 
         [HttpPut]
         [Route("{EventoId}")]
-        public async Task<IActionResult> Put(int EventoId, Evento model)
+        public async Task<IActionResult> Put(int EventoId, EventoDto model)
         {
             try
             {
@@ -107,11 +107,13 @@ namespace ProAgil.WebAPI.Controllers
 
                 if (evento == null) return NotFound();
 
-                _repo.Update(model);
+                _mapper.Map(model, evento);
+
+                _repo.Update(evento);
 
                 if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/evento/{model.Id}", model);
+                    return Created($"/api/evento/{model.Id}",  _mapper.Map<EventoDto>(evento));
                 }
             }
             catch (System.Exception)
