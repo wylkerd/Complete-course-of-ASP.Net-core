@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Titulo.component.scss']
 })
 export class TituloComponent implements OnInit {
-  title = 'ProAgil Eventos';
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {

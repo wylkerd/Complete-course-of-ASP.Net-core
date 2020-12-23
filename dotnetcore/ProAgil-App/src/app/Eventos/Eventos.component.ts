@@ -18,6 +18,8 @@ defineLocale('pt-br', ptBrLocale);
 })
 export class EventosComponent implements OnInit {
 
+  titulo = 'Eventos';
+
   eventosFiltrados: Evento [];
   eventos: Evento [];
 
@@ -29,19 +31,19 @@ export class EventosComponent implements OnInit {
   mostrarImagem = false;
   registerForm: FormGroup;
   bodyDeletarEvento = '';
-  
+
   constructor(
     private eventoService: EventoService
   , private modalService: BsModalService
   , private fb: FormBuilder
   , private localeService: BsLocaleService
   , private toastr: ToastrService
-  ) { 
+  ) {
     this.localeService.use('pt-br');
   }
 
   ////////////// ENCAPSULAMENTO FILTRO TEMA
-  
+
   _filtroTema = "";
 
   get filtroByTema(): string {
@@ -50,7 +52,7 @@ export class EventosComponent implements OnInit {
 
   set filtroByTema(value: string) {
     this._filtroTema = value;
-    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade); 
+    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade);
   }
   ///////////////////////// ENCAPSULAMENTO FILTRO CIDADE
 
@@ -62,7 +64,7 @@ export class EventosComponent implements OnInit {
 
   set filtroByLocal(value: string) {
     this._filtroLocal = value;
-    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade); 
+    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade);
   }
 
   ///////////////////////// ENCAPSULAMENTO FILTRO CAPACIDADE
@@ -75,10 +77,10 @@ export class EventosComponent implements OnInit {
 
   set filtroByCapacidade(value: string) {
     this._filtroCapacidade = value;
-    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade); 
+    this.filtrarEventos(this._filtroTema, this._filtroLocal, this._filtroCapacidade);
   }
 
-  ///////////////////////////  
+  ///////////////////////////
 
   editarEvento(evento: Evento, template: any) {
     this.modoSalvar = 'put';
@@ -106,7 +108,7 @@ export class EventosComponent implements OnInit {
     filtroTema.toLocaleLowerCase();
     filtroLocal.toLocaleLowerCase();
     filtroCapacidade.toString();
-    return this.eventosFiltrados = this.eventos.filter(evento => 
+    return this.eventosFiltrados = this.eventos.filter(evento =>
          evento.tema.toLocaleLowerCase().indexOf(filtroTema) !== -1
          && evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1
          && evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
@@ -115,7 +117,7 @@ export class EventosComponent implements OnInit {
   sortBy(prop: string) {
     return this.eventosFiltrados.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
   }
-    
+
   alternarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
   }
@@ -134,7 +136,7 @@ export class EventosComponent implements OnInit {
 
   getEventos() {
     this.eventoService.getAllEventos().subscribe(
-      (_eventos: Evento[]) => { 
+      (_eventos: Evento[]) => {
       this.eventos = _eventos;
       this.eventosFiltrados = this.eventos;
     }, error => {
