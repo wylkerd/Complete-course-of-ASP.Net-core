@@ -136,10 +136,9 @@ export class EventosComponent implements OnInit {
     this.eventoService.getAllEventos().subscribe(
       (_eventos: Evento[]) => { 
       this.eventos = _eventos;
-      this.eventosFiltrados = this.eventos; 
-      console.log(_eventos);
+      this.eventosFiltrados = this.eventos;
     }, error => {
-      console.log(error);
+      this.toastr.error(`Erro ao tentar carregar eventos: ${error}`);
     });
   }
 
