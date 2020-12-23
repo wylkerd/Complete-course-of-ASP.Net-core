@@ -10,7 +10,7 @@ using ProAgil.WebAPI.Dtos;
 namespace ProAgil.WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] // entende que as informações vem do corpo e permite integração com Data Annotation
     public class EventoController : ControllerBase
     {
         // injeção de dependencia
