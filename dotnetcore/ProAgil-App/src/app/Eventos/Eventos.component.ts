@@ -32,6 +32,8 @@ export class EventosComponent implements OnInit {
   registerForm: FormGroup;
   bodyDeletarEvento = '';
 
+  file: File;
+
   constructor(
     private eventoService: EventoService
   , private modalService: BsModalService
@@ -145,7 +147,12 @@ export class EventosComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.log(event);
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      this.file = event.target.files;
+      console.log(this.file);
+    }    
   }
 
   salvarAlteracao(template: any) {
