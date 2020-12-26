@@ -33,6 +33,8 @@ export class EventosComponent implements OnInit {
   bodyDeletarEvento = '';
 
   file: File;
+  fileNameToUpdate: string;
+  dataAtual: string;
 
   constructor(
     private eventoService: EventoService
@@ -88,6 +90,7 @@ export class EventosComponent implements OnInit {
     this.modoSalvar = 'put';
     this.openModal(template);
     this.evento = Object.assign({}, evento);
+    this.fileNameToUpdate = evento.imagemURL.toString();
     this.evento.imagemURL = '';
     this.registerForm.patchValue(this.evento);
   }
@@ -156,11 +159,28 @@ export class EventosComponent implements OnInit {
     }    
   }
 
-  uploadImage(){
-    const nomeArquivo = this.evento.imagemURL.split('\\', 3);
-    this.evento.imagemURL = nomeArquivo[2];
+  uploadImage() {
+    if (this.modoSalvar === 'post'){
+      const nomeArquivo = this.evento.imagemURL.split('\\', 3);
+      this.evento.imagemURL = nomeArquivo[2];
+  
+      this.eventoService.postUpload(this.file, nomeArquivo[2]).subscribe(
+        () => {
+          this.dataAtual = new Date().getSeconds.toString();
+          this.getEventos();
 
-    this.eventoService.postUpload(this.file, nomeArquivo[2]).subscribe();
+        }
+      );
+    } else {
+      this.evento.imagemURL = this.fileNameToUpdate;
+      this.eventoService.postUpload(this.file, this.fileNameToUpdate).subscribe(
+        () => {
+          this.dataAtual = new Date().getSeconds.toString();
+          this.getEventos();
+
+        }
+      );
+    }
   }
 
   salvarAlteracao(template: any) {
