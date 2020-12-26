@@ -166,7 +166,7 @@ export class EventosComponent implements OnInit {
   
       this.eventoService.postUpload(this.file, nomeArquivo[2]).subscribe(
         () => {
-          this.dataAtual = new Date().getSeconds.toString();
+          this.dataAtual = new Date().getMilliseconds.toString();
           this.getEventos();
 
         }
@@ -175,7 +175,7 @@ export class EventosComponent implements OnInit {
       this.evento.imagemURL = this.fileNameToUpdate;
       this.eventoService.postUpload(this.file, this.fileNameToUpdate).subscribe(
         () => {
-          this.dataAtual = new Date().getSeconds.toString();
+          this.dataAtual = new Date().getMilliseconds.toString();
           this.getEventos();
 
         }
