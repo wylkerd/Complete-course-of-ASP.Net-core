@@ -87,9 +87,9 @@ export class EventosComponent implements OnInit {
   editarEvento(evento: Evento, template: any) {
     this.modoSalvar = 'put';
     this.openModal(template);
-    this.evento = evento;
-    evento.imagemURL = '';
-    this.registerForm.patchValue(evento);
+    this.evento = Object.assign({}, evento);
+    this.evento.imagemURL = '';
+    this.registerForm.patchValue(this.evento);
   }
 
   novoEvento(template: any) {
@@ -156,15 +156,19 @@ export class EventosComponent implements OnInit {
     }    
   }
 
+  uploadImage(){
+    const nomeArquivo = this.evento.imagemURL.split('\\', 3);
+    this.evento.imagemURL = nomeArquivo[2];
+
+    this.eventoService.postUpload(this.file, nomeArquivo[2]).subscribe();
+  }
+
   salvarAlteracao(template: any) {
     if(this.registerForm.valid) {
       if (this.modoSalvar === 'post') {
         this.evento = Object.assign({}, this.registerForm.value);
 
-        this.eventoService.postUpload(this.file).subscribe();
-
-        const nomeArquivo = this.evento.imagemURL.split('\\', 3);
-        this.evento.imagemURL = nomeArquivo[2];
+        this.uploadImage();
 
         this.eventoService.postEvento(this.evento).subscribe(
           (novoEvento: Evento) => {
@@ -179,11 +183,8 @@ export class EventosComponent implements OnInit {
       } else {
         this.evento = Object.assign({ id: this.evento.id }, this.registerForm.value);
 
-        this.eventoService.postUpload(this.file).subscribe();
+        this.uploadImage();
 
-        const nomeArquivo = this.evento.imagemURL.split('\\', 3);
-        this.evento.imagemURL = nomeArquivo[2];
-        
         this.eventoService.putEvento(this.evento).subscribe(
           () => {
             template.hide();
