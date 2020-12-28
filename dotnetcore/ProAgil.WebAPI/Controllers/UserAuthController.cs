@@ -39,9 +39,10 @@ namespace ProAgil.WebAPI.Controllers
 
         [HttpGet]
         [Route("{GetUser}")]
-        public async Task<IActionResult> GetUser(UserDto userDto)
+        [AllowAnonymous] // para criar novo users não obrigando a autenticação. Permissão para ser anonimo
+        public async Task<IActionResult> GetUser()
         {
-            return Ok(userDto);
+            return Ok(new UserDto());
         }
 
         [HttpPost]
@@ -53,7 +54,7 @@ namespace ProAgil.WebAPI.Controllers
             {
                 var user = _mapper.Map<User>(userDto);
 
-                var result= await _userManager.CreateAsync(user, userDto.Password);
+                var result = await _userManager.CreateAsync(user, userDto.Password);
 
                 var userToReturn = _mapper.Map<UserDto>(user);
 
@@ -70,21 +71,20 @@ namespace ProAgil.WebAPI.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("{Login}")]
+        [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(UserLoginDto userlogin)
+        public async Task<IActionResult> Login(UserLoginDto userLogin)
         {
             try
             {
-                var user = await _userManager.FindByNameAsync(userlogin.UserName);
+                var user = await _userManager.FindByNameAsync(userLogin.UserName);
 
-                var result = await _signInManager.CheckPasswordSignInAsync(user, userlogin.Password, false);
+                var result = await _signInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
 
                 if (result.Succeeded)
                 {
                     var appUser = await _userManager.Users
-                        .FirstOrDefaultAsync(u => u.NormalizedUserName == userlogin.UserName.ToUpper());
+                        .FirstOrDefaultAsync(u => u.NormalizedUserName == userLogin.UserName.ToUpper());
 
                     var userToReturn = _mapper.Map<UserLoginDto>(appUser);
 
