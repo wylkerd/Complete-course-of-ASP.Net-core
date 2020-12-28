@@ -39,7 +39,7 @@ namespace ProAgil.WebAPI.Controllers
 
         [HttpGet]
         [Route("{GetUser}")]
-        [AllowAnonymous] // para criar novo users não obrigando a autenticação. Permissão para ser anonimo
+        // [AllowAnonymous] para criar novo users não obrigando a autenticação. Permissão para ser anonimo
         public async Task<IActionResult> GetUser()
         {
             return Ok(new UserDto());

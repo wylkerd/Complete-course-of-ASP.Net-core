@@ -97,6 +97,8 @@ namespace ProAgil.WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
+
             //app.UseHttpsRedirection();
             app.UseCors( x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
