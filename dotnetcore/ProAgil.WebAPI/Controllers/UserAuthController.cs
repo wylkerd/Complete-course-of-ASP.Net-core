@@ -33,5 +33,20 @@ namespace ProAgil.WebAPI.Controllers
         {
             return Ok(new User());
         }
+
+        [HttpPost]
+        [Route("{Register}")]
+        public async Task<IActionResult> Register(UserDto user)
+        {
+            try
+            {
+                
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+        }
     }
 }
