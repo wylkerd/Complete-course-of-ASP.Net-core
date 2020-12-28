@@ -64,7 +64,9 @@
 ```
   * Create DataBase and tables
 ```
-dotnet ef database update
+  dotnet ef database update
+  ON REPOSITORY
+  dotnet ef --startup-project ..\ProAgil.WebAPI\ database update
 ```
    ### Install Bootstrap and Font awesome
 ```
