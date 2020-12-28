@@ -1,9 +1,11 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ProAgil.Domain.Identity;
 using ProAgil.WebAPI.Dtos;
@@ -61,6 +63,42 @@ namespace ProAgil.WebAPI.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de Dados falhou {ex.Message}");
             }
+        }
+
+        [HttpPost]
+        [Route("{Login}")]
+        public async Task<IActionResult> Login(UserLoginDto userlogin)
+        {
+            try
+            {
+                var user = await _userManager.FindByNameAsync(userlogin.UserName);
+
+                var result = await _signInManager.CheckPasswordSignInAsync(user, userlogin.Password, false);
+
+                if (result.Succeeded)
+                {
+                    var appUser = await _userManager.Users
+                        .FirstOrDefaultAsync(u => u.NormalizedUserName == userlogin.UserName.ToUpper());
+
+                    var userToReturn = _mapper.Map<UserLoginDto>(appUser);
+
+                    return Ok(new {
+                        token = GenerateJWToken(appUser).Result,
+                        user = userToReturn
+                    });
+                }
+
+                return Unauthorized();
+            }
+            catch (System.Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de Dados falhou {ex.Message}");
+            }
+        }
+
+        private async Task<string> GenerateJWToken(User user)
+        {
+           return "";
         }
     }
 }
