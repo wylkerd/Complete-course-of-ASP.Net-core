@@ -20,9 +20,13 @@ import { PalestrantesComponent } from './Palestrantes/Palestrantes.component';
 import { DashboardComponent } from './Dashboard/Dashboard.component';
 import { ContatosComponent } from './Contatos/Contatos.component';
 import { TituloComponent } from './shared/Titulo/Titulo.component';
+import { UserComponent } from './User/User.component';
+import { LoginComponent } from './User/Login/Login.component';
+import { RegistrationComponent } from './User/Registration/Registration.component';
+
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     EventosComponent,
@@ -30,7 +34,10 @@ import { TituloComponent } from './shared/Titulo/Titulo.component';
     DashboardComponent,
     ContatosComponent,
     TituloComponent,
-    DateTimeFormatPipePipe
+    DateTimeFormatPipePipe,
+    UserComponent,
+    LoginComponent,
+    RegistrationComponent
    ],
   imports: [
     BrowserModule,
