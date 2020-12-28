@@ -54,6 +54,8 @@
    ### Create migrations
  ```
   dotnet ef migrations add init
+  ON REPOSITORY
+  dotnet ef --startup-project ..\ProAgil.WebAPI\ migrations add init
  ```
   * Connection string
 ```
