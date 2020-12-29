@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 })
 export class AuthService {
 
-  baseURL = 'http://localhost:5000/api/user/';
+  baseURL = 'http://localhost:5000/api/userauth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   register(model: any) {
-    return this.http.post(`${this.baseURL}login`, model);
+    return this.http.post(`${this.baseURL}register`, model);
   }
 
   loggedIn() {
