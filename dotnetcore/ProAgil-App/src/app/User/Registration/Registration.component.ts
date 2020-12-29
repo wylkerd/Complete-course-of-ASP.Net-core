@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-Registration',
@@ -10,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 export class RegistrationComponent implements OnInit {
 
   registerForm: FormGroup;
+  user: User;
+
   constructor(
     public fb: FormBuilder,
     private toastr: ToastrService
@@ -31,18 +34,23 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  cadastrarUsuario() {
-    console.log('Cadastrar Usuário');
-  }
-
   compararSenhas(fb: FormGroup) {
     const confirmSenhaCtrl = fb.get('confirmPassword');
     if (confirmSenhaCtrl.errors == null || 'mismatch' in confirmSenhaCtrl.errors) {
-      if (fb.get('password').value !== confirmSenhaCtrl.errors) {
-        fb.get('password').setErrors({ mismatch: true });
+      if (fb.get('password').value !== confirmSenhaCtrl.value) {
+        confirmSenhaCtrl.setErrors({ mismatch: true });
       } else {
         confirmSenhaCtrl.setErrors(null);
       }
+    }
+  }
+
+  cadastrarUsuario() {
+    if (this.registerForm.valid) {
+      this.user = Object.assign(
+        { password: this.registerForm.get('passwords.password').value },
+        this.registerForm.value);
+      console.log(this.user);
     }
   }
 
