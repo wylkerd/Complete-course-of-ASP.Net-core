@@ -45,7 +45,8 @@ import { RegistrationComponent } from './User/Registration/Registration.componen
     BsDatepickerModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    BrowserAnimationsModule, ToastrModule.forRoot({
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
