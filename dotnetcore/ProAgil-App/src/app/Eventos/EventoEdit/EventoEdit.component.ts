@@ -16,6 +16,7 @@ export class EventoEditComponent implements OnInit {
   titulo = 'Editor de Evento';
 
   evento = {};
+  imagemURL = 'assets/img/upload.png';
   registerForm: FormGroup;
 
   constructor(
@@ -37,7 +38,7 @@ export class EventoEditComponent implements OnInit {
       tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       local: ['', Validators.required],
       dataEvento: ['', Validators.required],
-      imagemURL: ['', Validators.required],
+      imagemURL: [''],
       qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
       telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -53,6 +54,14 @@ export class EventoEditComponent implements OnInit {
         url: ['', Validators.required]
       })
     });
+  }
+
+  onFileChange(file: FileList) {
+    const reader = new FileReader();
+
+    reader.onload = (event: any) => this.imagemURL = event.target.result;
+
+    reader.readAsDataURL(file[0]);
   }
 
 }
