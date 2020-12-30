@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -31,9 +32,9 @@ namespace ProAgil.WebAPI.Controllers
             try
             {
                 var eventos = await _repo.GetAllEventoAsync(true);
-                
+
                 var results = _mapper.Map<EventoDto[]>(eventos);
-                
+
                 return Ok(results);
             }
             catch (System.Exception)
@@ -47,17 +48,17 @@ namespace ProAgil.WebAPI.Controllers
         public async Task<IActionResult> upload()
         {
             try
-            {   
+            {
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine("Resources","images");
+                var folderName = Path.Combine("Resources", "images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
-                if(file.Length > 0)
+                if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
-                    var fullPath = Path.Combine(pathToSave, fileName.Replace("\""," ").Trim());
+                    var fullPath = Path.Combine(pathToSave, fileName.Replace("\"", " ").Trim());
 
-                    using(var stream = new FileStream(fullPath, FileMode.Create))
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
@@ -80,7 +81,7 @@ namespace ProAgil.WebAPI.Controllers
             try
             {
                 var evento = await _repo.GetEventoByAsyncById(EventoId, true);
-                
+
                 var results = _mapper.Map<EventoDto>(evento);
 
                 return Ok(results);
@@ -119,7 +120,7 @@ namespace ProAgil.WebAPI.Controllers
 
                 if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/evento/{model.Id}",  _mapper.Map<EventoDto>(evento));
+                    return Created($"/api/evento/{model.Id}", _mapper.Map<EventoDto>(evento));
                 }
             }
             catch (System.Exception ex)
@@ -136,9 +137,25 @@ namespace ProAgil.WebAPI.Controllers
         {
             try
             {
-                var evento = await _repo.GetEventoByAsyncById(EventoId, false);
 
+                var evento = await _repo.GetEventoByAsyncById(EventoId, false);
                 if (evento == null) return NotFound();
+
+                var idLotes = new List<int>();
+                var idRedesSociais = new List<int>();
+
+                model.Lotes.ForEach(item => idLotes.Add(item.Id));
+                model.RedeSociais.ForEach(item => idRedesSociais.Add(item.Id));
+
+                var lotes = evento.Lotes.Where(
+                    lote => !idLotes.Contains(lote.Id)
+                    ).ToArray();
+                var redesSociais = evento.RedeSociais.Where(
+                    rede => !idRedesSociais.Contains(rede.Id)
+                    ).ToArray();
+
+                if (lotes.Length > 0) _repo.DeleteRange(lotes);
+                if (redesSociais.Length > 0) _repo.DeleteRange(redesSociais);
 
                 _mapper.Map(model, evento);
 
@@ -146,7 +163,7 @@ namespace ProAgil.WebAPI.Controllers
 
                 if (await _repo.SaveChangesAsync())
                 {
-                    return Created($"/api/evento/{model.Id}",  _mapper.Map<EventoDto>(evento));
+                    return Created($"/api/evento/{model.Id}", _mapper.Map<EventoDto>(evento));
                 }
             }
             catch (System.Exception)
