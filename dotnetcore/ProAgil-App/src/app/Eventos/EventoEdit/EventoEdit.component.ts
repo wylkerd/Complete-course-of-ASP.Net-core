@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+import { EventoService } from 'src/app/services/evento.service';
 
 @Component({
   selector: 'app-EventoEdit',
@@ -8,9 +13,34 @@ import { Component, OnInit } from '@angular/core';
 export class EventoEditComponent implements OnInit {
 
   titulo = 'Editor de Evento';
-  constructor() { }
+
+  evento = {};
+  registerForm: FormGroup;
+
+  constructor(
+    private eventoService: EventoService
+    , private modalService: BsModalService
+    , private fb: FormBuilder
+    , private localeService: BsLocaleService
+    , private toastr: ToastrService
+  ) {
+    this.localeService.use('pt-br');
+  }
 
   ngOnInit() {
+    this.validation();
+  }
+
+  validation() {
+    this.registerForm = this.fb.group({
+      tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+      local: ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      imagemURL: ['', Validators.required],
+      qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
+      telefone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
 }

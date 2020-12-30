@@ -7,10 +7,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { DateTimeFormatPipePipe } from './helps/DateTimeFormatPipe.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 import { EventoService } from './services/evento.service';
 
@@ -50,6 +52,8 @@ import { EventoEditComponent } from './Eventos/EventoEdit/EventoEdit.component';
     BsDatepickerModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    TabsModule.forRoot(),
+    NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
