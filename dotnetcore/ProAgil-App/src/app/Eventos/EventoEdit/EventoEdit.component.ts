@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
@@ -19,6 +20,9 @@ export class EventoEditComponent implements OnInit {
   imagemURL = 'assets/img/upload.png';
   registerForm: FormGroup;
   file: File;
+  fileNameToUpdate: string;
+
+  dataAtual = '';
 
   get lotes(): FormArray {
     return <FormArray>this.registerForm.get('lotes');
@@ -29,17 +33,35 @@ export class EventoEditComponent implements OnInit {
   }
 
   constructor(
-    private eventoService: EventoService
-    , private modalService: BsModalService
-    , private fb: FormBuilder
-    , private localeService: BsLocaleService
-    , private toastr: ToastrService
+    private eventoService: EventoService,
+    private modalService: BsModalService,
+    private fb: FormBuilder,
+    private localeService: BsLocaleService,
+    private toastr: ToastrService,
+    private router: ActivatedRoute
   ) {
     this.localeService.use('pt-br');
   }
 
   ngOnInit() {
     this.validation();
+    this.carregarEvento();
+  }
+
+  carregarEvento() {
+    const idEvento = +this.router.snapshot.paramMap.get('id');
+    this.eventoService.getEventoById(idEvento)
+      .subscribe(
+        (evento: Evento) => {
+          this.evento = Object.assign({}, evento);
+          this.fileNameToUpdate = evento.imagemURL.toString();
+
+          this.imagemURL = `http://localhost:5000/resources/images/${this.evento.imagemURL}?_ts=${this.dataAtual}`;
+
+          this.evento.imagemURL = '';
+          this.registerForm.patchValue(this.evento);
+        }
+      );
   }
 
   validation() {
