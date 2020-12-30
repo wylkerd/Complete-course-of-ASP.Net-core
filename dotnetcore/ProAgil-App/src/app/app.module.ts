@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -24,6 +24,7 @@ import { UserComponent } from './User/User.component';
 import { LoginComponent } from './User/Login/Login.component';
 import { RegistrationComponent } from './User/Registration/Registration.component';
 import { CommonModule } from '@angular/common';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 @NgModule({
@@ -59,7 +60,12 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule
   ],
   providers: [
-    EventoService
+    EventoService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
