@@ -10,6 +10,7 @@ export class EventoService {
 
   baseURL = 'http://localhost:5000/api/evento';
   tokenHeader: HttpHeaders;
+
   constructor(private http: HttpClient) {
     this.tokenHeader = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
   }
