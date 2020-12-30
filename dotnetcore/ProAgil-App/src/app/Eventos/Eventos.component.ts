@@ -20,8 +20,8 @@ export class EventosComponent implements OnInit {
 
   titulo = 'Eventos';
 
-  eventosFiltrados: Evento [];
-  eventos: Evento [];
+  eventosFiltrados: Evento[];
+  eventos: Evento[];
 
   evento: Evento;
   modoSalvar = 'post';
@@ -38,10 +38,10 @@ export class EventosComponent implements OnInit {
 
   constructor(
     private eventoService: EventoService
-  , private modalService: BsModalService
-  , private fb: FormBuilder
-  , private localeService: BsLocaleService
-  , private toastr: ToastrService
+    , private modalService: BsModalService
+    , private fb: FormBuilder
+    , private localeService: BsLocaleService
+    , private toastr: ToastrService
   ) {
     this.localeService.use('pt-br');
   }
@@ -100,7 +100,7 @@ export class EventosComponent implements OnInit {
     this.openModal(template);
   }
 
-  openModal(template:any) {
+  openModal(template: any) {
     this.registerForm.reset();
     template.show();
   }
@@ -110,14 +110,14 @@ export class EventosComponent implements OnInit {
     this.getEventos();
   }
 
-  filtrarEventos(filtroTema: string, filtroLocal: string, filtroCapacidade: string): Evento[]{
+  filtrarEventos(filtroTema: string, filtroLocal: string, filtroCapacidade: string): Evento[] {
     filtroTema.toLocaleLowerCase();
     filtroLocal.toLocaleLowerCase();
     filtroCapacidade.toString();
     return this.eventosFiltrados = this.eventos.filter(evento =>
-         evento.tema.toLocaleLowerCase().indexOf(filtroTema) !== -1
-         && evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1
-         && evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
+      evento.tema.toLocaleLowerCase().indexOf(filtroTema) !== -1
+      && evento.local.toLocaleLowerCase().indexOf(filtroLocal) !== -1
+      && evento.qtdPessoas.toString().indexOf(filtroCapacidade) !== -1);
   }
 
   sortBy(prop: string) {
@@ -141,13 +141,15 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos() {
+    this.dataAtual = new Date().getMilliseconds.toString();
+
     this.eventoService.getAllEventos().subscribe(
       (_eventos: Evento[]) => {
-      this.eventos = _eventos;
-      this.eventosFiltrados = this.eventos;
-    }, error => {
-      this.toastr.error(`Erro ao tentar carregar eventos: ${error}`);
-    });
+        this.eventos = _eventos;
+        this.eventosFiltrados = this.eventos;
+      }, error => {
+        this.toastr.error(`Erro ao tentar carregar eventos: ${error}`);
+      });
   }
 
   onFileChange(event) {
@@ -156,14 +158,14 @@ export class EventosComponent implements OnInit {
     if (event.target.files && event.target.files.length) {
       this.file = event.target.files;
       console.log(this.file);
-    }    
+    }
   }
 
   uploadImage() {
-    if (this.modoSalvar === 'post'){
+    if (this.modoSalvar === 'post') {
       const nomeArquivo = this.evento.imagemURL.split('\\', 3);
       this.evento.imagemURL = nomeArquivo[2];
-  
+
       this.eventoService.postUpload(this.file, nomeArquivo[2]).subscribe(
         () => {
           this.dataAtual = new Date().getMilliseconds.toString();
@@ -184,7 +186,7 @@ export class EventosComponent implements OnInit {
   }
 
   salvarAlteracao(template: any) {
-    if(this.registerForm.valid) {
+    if (this.registerForm.valid) {
       if (this.modoSalvar === 'post') {
         this.evento = Object.assign({}, this.registerForm.value);
 
@@ -227,13 +229,13 @@ export class EventosComponent implements OnInit {
   confirmeDelete(template: any) {
     this.eventoService.deleteEvento(this.evento.id).subscribe(
       () => {
-          template.hide();
-          this.getEventos();
-          this.toastr.success('Deletado com sucesso!');
-        }, error => {
-          this.toastr.error('Erro ao tentar deletar!');
-          console.log(error);
-        }
+        template.hide();
+        this.getEventos();
+        this.toastr.success('Deletado com sucesso!');
+      }, error => {
+        this.toastr.error('Erro ao tentar deletar!');
+        console.log(error);
+      }
     );
   }
 

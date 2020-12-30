@@ -180,8 +180,8 @@
       <div class="row">
         <div class="col-md-12 d-flex justify-content-end">
           <!-- {{registerForm.value | json}} -->
-          <button [disabled]="!registerForm.valid" class="btn btn-success my-2">Salvar
-            Alterações</button>
+          <button [disabled]="!registerForm.valid" class="btn btn-success my-2" (click)="salvarEvento()">
+            Salvar Alterações</button>
         </div>
       </div>
     </div>
@@ -202,7 +202,7 @@
           <p class="card-text">
             <b>Local:</b> {{evento.local}}
             <br>
-            <b>Data:</b> {{evento.dataEvento | DateTimeFormatPipe}}
+            <b>Data:</b> {{evento.dataEvento}}
           </p>
           <hr>
           <p class="card-text">
