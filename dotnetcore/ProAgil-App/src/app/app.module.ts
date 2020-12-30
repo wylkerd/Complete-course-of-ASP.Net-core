@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DateTimeFormatPipePipe } from './helps/DateTimeFormatPipe.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { EventoService } from './services/evento.service';
 
@@ -55,6 +56,7 @@ import { EventoEditComponent } from './Eventos/EventoEdit/EventoEdit.component';
     TabsModule.forRoot(),
     NgxMaskModule.forRoot(),
     BrowserAnimationsModule,
+    NgxCurrencyModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
