@@ -137,7 +137,6 @@ namespace ProAgil.WebAPI.Controllers
         {
             try
             {
-
                 var evento = await _repo.GetEventoByAsyncById(EventoId, false);
                 if (evento == null) return NotFound();
 

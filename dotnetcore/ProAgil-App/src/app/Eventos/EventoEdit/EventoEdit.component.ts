@@ -28,8 +28,8 @@ export class EventoEditComponent implements OnInit {
     return <FormArray>this.registerForm.get('lotes');
   }
 
-  get redesSociais(): FormArray {
-    return <FormArray>this.registerForm.get('redesSociais');
+  get redeSociais(): FormArray {
+    return <FormArray>this.registerForm.get('redeSociais');
   }
 
   constructor(
@@ -66,7 +66,7 @@ export class EventoEditComponent implements OnInit {
           });
 
           this.evento.redeSociais.forEach(redeSocial => {
-            this.redesSociais.push(this.criaRedeSocial(redeSocial));
+            this.redeSociais.push(this.criaRedeSocial(redeSocial));
           });
         }
       );
@@ -83,7 +83,7 @@ export class EventoEditComponent implements OnInit {
       telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       lotes: this.fb.array([]),
-      redesSociais: this.fb.array([])
+      redeSociais: this.fb.array([])
     });
   }
 
@@ -111,7 +111,7 @@ export class EventoEditComponent implements OnInit {
   }
 
   adicionarRedeSocial() {
-    this.redesSociais.push(this.criaRedeSocial({ id: 0 }));
+    this.redeSociais.push(this.criaRedeSocial({ id: 0 }));
   }
 
   removerLote(id: number) {
@@ -119,7 +119,7 @@ export class EventoEditComponent implements OnInit {
   }
 
   removerRedeSocial(id: number) {
-    this.redesSociais.removeAt(id);
+    this.redeSociais.removeAt(id);
   }
 
   onFileChange(file: FileList) {
