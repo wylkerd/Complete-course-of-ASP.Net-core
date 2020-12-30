@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
@@ -15,9 +15,18 @@ export class EventoEditComponent implements OnInit {
 
   titulo = 'Editor de Evento';
 
-  evento = {};
+  evento: Evento = new Evento();
   imagemURL = 'assets/img/upload.png';
   registerForm: FormGroup;
+  file: File;
+
+  get lotes(): FormArray {
+    return <FormArray>this.registerForm.get('lotes');
+  }
+
+  get redesSociais(): FormArray {
+    return <FormArray>this.registerForm.get('redesSociais');
+  }
 
   constructor(
     private eventoService: EventoService
@@ -62,6 +71,22 @@ export class EventoEditComponent implements OnInit {
       nome: ['', Validators.required],
       url: ['', Validators.required]
     });
+  }
+
+  adicionarLote() {
+    this.lotes.push(this.criaLote());
+  }
+
+  adicionarRedeSocial() {
+    this.redesSociais.push(this.criaRedeSocial());
+  }
+
+  removerLote(id: number) {
+    this.lotes.removeAt(id);
+  }
+
+  removerRedeSocial(id: number) {
+    this.redesSociais.removeAt(id);
   }
 
   onFileChange(file: FileList) {
