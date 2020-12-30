@@ -67,13 +67,14 @@ export class EventoEditComponent implements OnInit {
 
           this.evento.redeSociais.forEach(redeSocial => {
             this.redesSociais.push(this.criaRedeSocial(redeSocial));
-          })
+          });
         }
       );
   }
 
   validation() {
     this.registerForm = this.fb.group({
+      id: [],
       tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       local: ['', Validators.required],
       dataEvento: ['', Validators.required],
