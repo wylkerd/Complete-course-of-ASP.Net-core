@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -23,8 +24,8 @@ import { TituloComponent } from './shared/Titulo/Titulo.component';
 import { UserComponent } from './User/User.component';
 import { LoginComponent } from './User/Login/Login.component';
 import { RegistrationComponent } from './User/Registration/Registration.component';
-import { CommonModule } from '@angular/common';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { EventoEditComponent } from './Eventos/EventoEdit/EventoEdit.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     AppComponent,
     NavComponent,
     EventosComponent,
+    EventoEditComponent,
     PalestrantesComponent,
     DashboardComponent,
     ContatosComponent,
