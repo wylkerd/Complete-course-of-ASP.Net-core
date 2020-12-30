@@ -23,10 +23,11 @@ import { TituloComponent } from './shared/Titulo/Titulo.component';
 import { UserComponent } from './User/User.component';
 import { LoginComponent } from './User/Login/Login.component';
 import { RegistrationComponent } from './User/Registration/Registration.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     EventosComponent,
@@ -38,14 +39,15 @@ import { RegistrationComponent } from './User/Registration/Registration.componen
     UserComponent,
     LoginComponent,
     RegistrationComponent
-   ],
+  ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule, BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
