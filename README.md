@@ -75,6 +75,11 @@ npm i --save bootstrap
 ```
 npm i --save @fortawesome/fontawesome-free
 ```
+   ### Generate Guardian
+```
+On App
+ng g g auth/auth
+```
  ## Main extensions for working with .NET
  * C#
  * C# Extensions (crate interfaces and others things)
