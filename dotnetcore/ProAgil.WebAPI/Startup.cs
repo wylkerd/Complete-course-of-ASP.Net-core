@@ -33,17 +33,17 @@ namespace ProAgil.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ProAgilContext>( 
-                x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
+            services.AddDbContext<ProAgilContext>(
+                x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
             IdentityBuilder builder = services.AddIdentityCore<User>(options =>
             {
-                options.Password.RequireDigit = false ;
-                options.Password.RequireNonAlphanumeric = false ;
-                options.Password.RequireLowercase = false ;
-                options.Password.RequireUppercase = false ;
-                options.Password.RequiredLength = 4 ;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 4;
             });
 
             builder = new IdentityBuilder(builder.UserType, typeof(Role), builder.Services);
@@ -55,7 +55,7 @@ namespace ProAgil.WebAPI
             // toda vez que chamar IProAgilRepository será retornado o repositorio ProAgilRepository
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => 
+                .AddJwtBearer(options =>
                     {
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
@@ -68,13 +68,13 @@ namespace ProAgil.WebAPI
                     }
                 );
 
-            services.AddMvc( options => 
-                {
-                    var policy = new AuthorizationPolicyBuilder()
-                        .RequireAuthenticatedUser()
-                        .Build();
-                    options.Filters.Add(new AuthorizeFilter(policy));
-                })
+            services.AddMvc(options =>
+               {
+                   var policy = new AuthorizationPolicyBuilder()
+                       .RequireAuthenticatedUser()
+                       .Build();
+                   options.Filters.Add(new AuthorizeFilter(policy));
+               })
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
             services.AddScoped<IProAgilRepository, ProAgilRepository>();
@@ -100,11 +100,12 @@ namespace ProAgil.WebAPI
             app.UseAuthentication();
 
             //app.UseHttpsRedirection();
-            app.UseCors( x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseStaticFiles();
 
-            app.UseStaticFiles(new StaticFileOptions() {
+            app.UseStaticFiles(new StaticFileOptions()
+            {
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
                 RequestPath = new PathString("/Resources")
             });
